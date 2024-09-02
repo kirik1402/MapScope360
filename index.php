@@ -101,6 +101,19 @@ $firstFrame = 'uploads/frames/' . $frameData[0]['file'];
             border-radius: 5px;
             font-size: 14px;
         }
+        /* Новый стиль для кнопки Статистика */
+        #stats-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 1000;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +123,7 @@ $firstFrame = 'uploads/frames/' . $frameData[0]['file'];
     </div>
     <div id="map-container">
         <div id="map"></div>
+        <button id="stats-button">Статистика</button> <!-- Кнопка Статистика -->
     </div>
 
     <div class="button-container">
@@ -346,7 +360,12 @@ $firstFrame = 'uploads/frames/' . $frameData[0]['file'];
                 alert('Координаты еще не загружены.');
             }
         });
-
+        
+        var statsButton = document.getElementById('stats-button');
+        statsButton.addEventListener('click', function() {
+            window.location.href = 'stats.html';
+        });
+        
         function loadPanoramaFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
             const fileName = urlParams.get('file');
